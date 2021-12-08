@@ -1,0 +1,10 @@
+﻿  HookLib.lib(HookLib.obj) : MSIL .netmodule or module compiled with /GL found; restarting link with /LTCG; add /LTCG to the link command line to improve linker performance
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+  Generating code
+  Finished generating code
+Zydis.lib(Decoder.obj) : warning LNK4099: PDB 'Zydis.pdb' was not found with 'Zydis.lib(Decoder.obj)' or at 'C:\Users\Dev\Downloads\Authed CCH\Zydis.pdb'; linking object as if no debug info
+Zydis.lib(Register.obj) : warning LNK4099: PDB 'Zydis.pdb' was not found with 'Zydis.lib(Register.obj)' or at 'C:\Users\Dev\Downloads\Authed CCH\Zydis.pdb'; linking object as if no debug info
+Zydis.lib(DecoderData.obj) : warning LNK4099: PDB 'Zydis.pdb' was not found with 'Zydis.lib(DecoderData.obj)' or at 'C:\Users\Dev\Downloads\Authed CCH\Zydis.pdb'; linking object as if no debug info
+Zydis.lib(SharedData.obj) : warning LNK4099: PDB 'Zydis.pdb' was not found with 'Zydis.lib(SharedData.obj)' or at 'C:\Users\Dev\Downloads\Authed CCH\Zydis.pdb'; linking object as if no debug info
+HookLib.lib(HookLib.obj) : warning LNK4099: PDB 'HookLib.pdb' was not found with 'HookLib.lib(HookLib.obj)' or at 'C:\Users\Dev\Downloads\Authed CCH\HookLib.pdb'; linking object as if no debug info
+  AUWPMC.vcxproj -> C:\Users\Dev\Downloads\Authed CCH\ChingChongHook.dll
