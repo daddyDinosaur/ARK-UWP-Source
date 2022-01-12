@@ -14,8 +14,3 @@ IDA — you gotta find it yourself
 Cheat engine — you gotta find it yourself
 
 Process hacker 2 — you gotta find it yourself
-
-
-Unknown Cheats Post:
-
-https://www.unknowncheats.me/forum/other-fps-games/480398-ark-survival-evolved-source-update-partially-add-features.html#post3311402
