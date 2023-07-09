@@ -195,6 +195,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Cheat.cpp" />
+    <ClCompile Include="Cheat\esp.cpp" />
     <ClCompile Include="Helpers\Hooking\D3D11Hooking.cpp" />
     <ClCompile Include="Helpers\imgui\imgui.cpp" />
     <ClCompile Include="Helpers\imgui\imgui_demo.cpp" />
@@ -210,9 +211,9 @@
     <ClCompile Include="Helpers\SDK\UE4\UE4.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Cheat\esp.h" />
     <ClInclude Include="Helpers\random\byte.h" />
     <ClInclude Include="Cheat.h" />
-    <ClInclude Include="Helpers\random\Extra.h" />
     <ClInclude Include="Helpers\random\fnv1.h" />
     <ClInclude Include="Helpers\Hooking\D3D11Hooking.hpp" />
     <ClInclude Include="Helpers\Hooking\HookLib.h" />

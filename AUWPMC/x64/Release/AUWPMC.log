@@ -19,53 +19,27 @@ C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Helpers\SDK\SDK.h(1796,1): w
 C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Helpers\SDK\SDK.h(1795,8): message : see declaration of 'AGameState'
 C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Helpers\SDK\SDK.h(1869,1): warning C4099: 'UCharacterMovementComponent': type name first seen using 'class' now seen using 'struct'
 C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Helpers\SDK\SDK.h(1868,8): message : see declaration of 'UCharacterMovementComponent'
-C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Menu.h(77,20): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Menu.h(78,18): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Menu.h(79,19): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Menu.h(103,20): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Menu.h(104,18): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Menu.h(105,19): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(154,115): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(178,135): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(179,135): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(180,135): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(181,135): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(208,91): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
-C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(534,46): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(589,38): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(590,38): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(591,38): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(647,50): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(670,38): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(671,38): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(672,38): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(675,39): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(676,39): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(677,39): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(734,34): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(735,34): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(736,34): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(758,34): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(759,34): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(760,34): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(882,59): warning C4305: '=': truncation from 'double' to 'float'
-C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(896,79): warning C4305: '=': truncation from '__int64' to 'float'
-C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(907,26): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(908,26): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(909,26): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(913,88): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(921,26): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(922,26): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(923,26): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(1325,30): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(1339,221): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(1339,199): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(1339,171): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(1339,150): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(1339,127): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(1356,160): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(1356,138): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(1356,115): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(1356,92): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Menu.h(58): warning C4715: 'MinArr': not all control paths return a value
-C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Menu.h(44): warning C4715: 'MaxArr': not all control paths return a value
+C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(1483,30): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(1497,221): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(1497,199): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(1497,171): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(1497,150): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(1497,127): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(1514,160): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(1514,138): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(1514,115): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Cheat.cpp(1514,92): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Menu.h(70): warning C4715: 'MaxArr': not all control paths return a value
+C:\Users\Dev\Documents\GitHub\ARK-UWP-Source\AUWPMC\Menu.h(84): warning C4715: 'MinArr': not all control paths return a value
   HookLib.lib(HookLib.obj) : MSIL .netmodule or module compiled with /GL found; restarting link with /LTCG; add /LTCG to the link command line to improve linker performance
 LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   Generating code

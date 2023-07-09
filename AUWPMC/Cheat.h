@@ -34,6 +34,10 @@ public:
 	static HCURSOR WINAPI SetCursorHook(HCURSOR hCursor);
 	static void HookInput();
 	static void RemoveInput();
+	static void setupImGuiStyle(ImGuiStyle* Style, ImGuiIO& IO, ImFontConfig& Config);
+	static void setupImGui();
+	static void renderFrame();
+	static void setColorSettings(ImVec4* colors);
 public:
 	static inline bool Init();
 	static inline bool Remove();

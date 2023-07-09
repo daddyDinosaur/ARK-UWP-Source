@@ -72,6 +72,9 @@
     <ClCompile Include="Helpers\Hooking\MemHelper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Cheat\esp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cheat.h">
@@ -152,9 +155,6 @@
     <ClInclude Include="Menu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Helpers\random\Extra.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Includes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -171,6 +171,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Helpers\random\xorstr.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cheat\esp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
