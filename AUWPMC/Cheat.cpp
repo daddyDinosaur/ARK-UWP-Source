@@ -1,33 +1,6 @@
-#include <d3d11.h>
-#include "imgui\imgui.h"
-#include "imgui\imgui_impl_win32.h"
-#include "imgui\imgui_impl_dx11.h"
-#include "imgui\imgui_internal.h"
-#include "Cheat.h"
-#include "Logger.h"
 #include "Menu.h"
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <iostream>
-#include <thread>                      
-#include <fstream>                           
-#include <string>                       
-#include <windows.h>    
-#include "byte.h"
-#include <Shlobj.h>
-#include <sstream>
-#include <tchar.h>
-#include <string>
-#include <iomanip>
-#include <tlhelp32.h>
-#include <filesystem>
-#include <intrin.h>
-#include "xorstr.hpp"
-
-int UWorldOnline;
-int ObjOnline;
-int NamesOnline;
-int ProcessEventOnline;
+#include "Helpers/random/byte.h"
+#include "cheat.h"
 
 bool NearbyNoglin = false;
 std::string CompareName;
@@ -40,14 +13,12 @@ void Renderer::RemoveInput()
         SetWindowLongPtrA(D3D.GameWindow, GWLP_WNDPROC, reinterpret_cast<LONG_PTR>(D3D.WndProcOriginal));
         D3D.WndProcOriginal = nullptr;
     }
-
 }
 
 void Renderer::HookInput()
 {
     Renderer::RemoveInput();
     D3D.WndProcOriginal = reinterpret_cast<WNDPROC>(SetWindowLongPtrA(D3D.GameWindow, GWLP_WNDPROC, reinterpret_cast<LONG_PTR>(WndProc)));
-    //Logger::Log("[WndProcOriginal] = %p\n", D3D.WndProcOriginal);
 }
 
 bool Renderer::Remove()
@@ -132,39 +103,11 @@ inline bool Renderer::Init()
 {
 
     D3D.PresentFunc = GetD3D11PresentFunction();
-    if (!SetHook(D3D.PresentFunc, D3D_HOOK, reinterpret_cast<void**>(&D3D.OriginalPresent)))
-    {
-        Logger::Log("[HOOK]: Failed Present Function Hook!\n");
-        return false;
-    }
-    if (!SetHook(SetCursorPos, SetCursorPosHook, reinterpret_cast<void**>(&D3D.SetCursorPosOriginal)))
-    {
-        Logger::Log("[HOOK}: Failed SetCursorPos Hook!\n");
-        return false;
-    };
-    if (!SetHook(SetCursor, SetCursorHook, reinterpret_cast<void**>(&D3D.SetCursorOriginal)))
-    {
-        Logger::Log("[HOOK]: Failed SetCursor Hook!\n");
-        return false;
-    }; // Offset to update here 
-    if (!SetHook(reinterpret_cast<void*>(Cache.GameBase + 0x173CA60), Utils::PE_HOOK, reinterpret_cast<PVOID*>(&Settings.OriginalPE)))
-    {
-#ifdef PRIMAL_DEBUG
-        Logger::Log("[HOOK]: Failed ProcessEvent Hook!\n"); // (UBoject)
-#endif
-    }
-    if (!SetHook(reinterpret_cast<void*>(Cache.GameBase + 0x866D50), Utils::GetAdjustedAim, reinterpret_cast<PVOID*>(&Cache.OriginalGetAdjustedAim)))
-    {
-#ifdef PRIMAL_DEBUG
-        Logger::Log("[HOOK]: Failed AdjustedAim Hook!\n");
-#endif
-    }
-//    if (!SetHook(reinterpret_cast<void*>(Cache.GameBase + 0x611FA0), Utils::DoFireProjectile, reinterpret_cast<PVOID*>(&Settings.OriginalDoFireProjectile)))
-//    {
-//#ifdef PRIMAL_DEBUG
-//        Logger::Log("[HOOK]: Failed Fire Proj Hook!\n");
-//#endif
-//    }
+    SetHook(D3D.PresentFunc, D3D_HOOK, reinterpret_cast<void**>(&D3D.OriginalPresent));
+    SetHook(SetCursorPos, SetCursorPosHook, reinterpret_cast<void**>(&D3D.SetCursorPosOriginal));
+    SetHook(SetCursor, SetCursorHook, reinterpret_cast<void**>(&D3D.SetCursorOriginal));
+    SetHook(reinterpret_cast<void*>(Cache.GameBase + 0x173CA60), Utils::PE_HOOK, reinterpret_cast<PVOID*>(&Settings.OriginalPE));
+    SetHook(reinterpret_cast<void*>(Cache.GameBase + 0x866D50), Utils::GetAdjustedAim, reinterpret_cast<PVOID*>(&Cache.OriginalGetAdjustedAim));
     return true;
 }
 
@@ -256,19 +199,6 @@ FVector* Utils::GetAdjustedAim(AShooterWeapon* Weapon, FVector* Result) {
     }
     return Cache.OriginalGetAdjustedAim(Weapon, Result);
 }
-
-//void Utils::DoFireProjectile(uintptr_t APrimalWeaponBow, FVector Origin, FVector ShootDir) {
-//    if (Cache.AimbotTarget && Settings.Aimbot.SilentAim)
-//    {
-//        FVector BoneLocation;
-//        Settings.GetBoneLocation(Cache.AimbotTarget->MeshComponent, &BoneLocation, Cache.AimbotTarget->MeshComponent->GetBoneName(AimBone), 0);
-//        FVector AimDirection = Cache.LocalPlayer->GetDirectionVector(Cache.LPC->PlayerCameraManager->GetCameraLocation(), BoneLocation);
-//        ShootDir = AimDirection;
-//        //Origin = BoneLocation;
-//        return;
-//    }
-//    return Settings.OriginalDoFireProjectile(APrimalWeaponBow, Origin, ShootDir);
-//}
 
 inline void Renderer::Drawing::RenderAimFOV(ImColor Color)
 {
@@ -466,15 +396,12 @@ HRESULT Renderer::D3D_HOOK(IDXGISwapChain* SwapChain, UINT SyncInterval, UINT Fl
     ImGui::SetWindowSize(ImVec2(io.DisplaySize.x, io.DisplaySize.y));
     auto DrawList = ImGui::GetCurrentWindow()->DrawList;
 
-    //std::wstring zinger = s2ws(RetrieveUWPFolder());
-    //Logger::Log(RetrieveUWPFolder().c_str());
-
     std::array<std::string, (151)> RealDinoNames = { "Achatina", "Allo", "Ammonite", "Angler", "Anky", "Ant", "Archa", "Argent", "Arthro", "Astrodelphis", "Baryonyx", "Basilisk", "Basilosaurus", "Bat", "Beaver", "Beetle", "Bigfoot", "Bloodstalker", "BrainSlug", "Bronto", "Camelsaurus", "Carno", "CaveCrab", "CaveWolf", "Chalico", "Cnidaria", "Compy", "Daeodon", "Deathworm", "Default", "Deinonychus", "DesertTitan", "Dilo", "Dimetro", "Dimorph", "Diplo", "Diplocaulus", "Direbear", "Direwolf", "Dodo", "Doed", "Dolphin", "Dragon", "Dragonfly", "Dunkle", "Eel", "Elite Carno", "Elite Raptor", "Elite Rex", "Elite Mega", "Enforcer", "Equus", "Euryp", "Flock", "ForestTitan", "Gacha", "Galli", "GasBags", "GiantTurtle", "Gigant", "Gremlin", "Griffin", "Hesperornis", "Hyaenodon", "IceTitan", "Ichthyornis", "Iguanodon", "Jerboa", "Jugbug", "Kairu", "Kangaroo", "Kaprosuchus", "Kentro", "Lamprey", "Lantern Bird", "Lantern Goat", "Lantern Lizard", "LavaLizard", "Leech", "Leedsichthys", "Lionfish Lion", "Liopleurodon", "Lystro", "Maewing", "Mammoth", "Managarmr", "Manta", "Mantis", "Megalania", "Megalosaurus", "Megapithecus", "Megatherium", "Microraptor", "MoleRat", "Monkey", "Mosasaur", "Mega", "Moschops", "Moth", "Otter", "Ovi", "Owl", "Pachy", "Para", "Paracer", "Pegomastax", "Pela", "Phiomia", "Phoenix", "Piranha", "Plesiosaur", "Ptera", "Pug", "Purlovia", "Quetz", "Raptor", "Rex", "Rhino", "RockDrake", "RockElemental", "Sabertooth", "Sarco", "Scorpion", "Scout", "Sheep", "Space Whale", "Spider", "SpineyLizard", "Spino", "Stag", "Stego", "Summoner", "Tapejara", "TekStrider", "TekWyvern", "TerrorBird", "Therizinosaurus", "Thylacoleo", "Titan", "Titanboa", "Toad", "Trike", "Troodon", "Tropeognathus", "Turtle", "Tusoteuthis", "Velonasaur", "Vulture", "Wyvern", "Xenomorph", "Yutyrannus"};
 
     auto DebugString = "Default";
     try
-    { // Offset to update Here UWorld
-        UWorld::GWorld = *reinterpret_cast<decltype(UWorld::GWorld)*>(Cache.GameBase + 0x42517B8);
+    {
+        UWorld::GWorld = *reinterpret_cast<decltype(UWorld::GWorld)*>(Cache.GameBase + Settings.uworld);
         do
         {
             UWorld* GWorld = UWorld::GWorld;
@@ -516,7 +443,6 @@ HRESULT Renderer::D3D_HOOK(IDXGISwapChain* SwapChain, UINT SyncInterval, UINT Fl
                         float HealthPercent = Actor->ReplicatedCurrentHealth / Actor->ReplicatedMaxHealth;
                         std::string PlayerHP = std::string("[" + std::to_string((int)Actor->ReplicatedCurrentHealth) + "/" + std::to_string((int)Actor->ReplicatedMaxHealth) + " HP]");
                         std::string PlayerTorp = std::string("[" + std::to_string((int)Actor->ReplicatedCurrentTorpor) + "/" + std::to_string((int)Actor->ReplicatedMaxTorpor) + " Torp]");
-                        //Logger::Log("Log 1.1\n");
 
                         if (Actor == Cache.LocalActor && Settings.Visuals.HideSelf) continue;
 
@@ -533,7 +459,6 @@ HRESULT Renderer::D3D_HOOK(IDXGISwapChain* SwapChain, UINT SyncInterval, UINT Fl
                             DistanceOffset = DistanceOffset * 2;
                         }
 
-                        Logger::Log("Log 2.1\n");
                         if (Actor->IsLocalPlayer()) 
                         {
                             Cache.LocalActor = Actor; 
@@ -553,7 +478,6 @@ HRESULT Renderer::D3D_HOOK(IDXGISwapChain* SwapChain, UINT SyncInterval, UINT Fl
                             }
                         }
 
-                        Logger::Log("Log 3.1\n");
                         if (!Actor->IsConscious() && !isDead)
                         {
                             isSleeping = true;
@@ -583,7 +507,6 @@ HRESULT Renderer::D3D_HOOK(IDXGISwapChain* SwapChain, UINT SyncInterval, UINT Fl
                                 std::to_string(Actor->MyCharacterStatusComponent->BaseCharacterLevel + Actor->
                                     MyCharacterStatusComponent->ExtraCharacterLevel) + "]";
                         }
-                        Logger::Log("Log 4.1\n");
                         if (Actor->IsPlayer() && Actor->IsConscious() && !Actor->IsDead() && Actor != Cache.LocalActor)
                         {
                             if (!isTribeDinoOrPlayer) {
@@ -598,7 +521,6 @@ HRESULT Renderer::D3D_HOOK(IDXGISwapChain* SwapChain, UINT SyncInterval, UINT Fl
                             if (!Settings.Visuals.DrawDeadPlayers && isDead) continue;
                             if (!Settings.Visuals.DrawSleepingPlayers && isSleeping) continue;
                             if (Settings.Visuals.HideTeamPlayers && isTribeDinoOrPlayer) continue;
-                            Logger::Log("Log 1\n");
                             if (Settings.Visuals.DrawDeadPlayers && isDead)
                             {
                                 Renderer::Drawing::RenderText(ImVec2(ActorScreenLocation.X, ActorScreenLocation.Y - 13), PlayerColor, "Dead", 500);
@@ -607,7 +529,6 @@ HRESULT Renderer::D3D_HOOK(IDXGISwapChain* SwapChain, UINT SyncInterval, UINT Fl
                             {
                                 Renderer::Drawing::RenderText(ImVec2(ActorScreenLocation.X, ActorScreenLocation.Y - DistanceOffset + 13), PlayerColor, "Sleeping", 500);
                             }
-                            Logger::Log("Log 2\n");
                             if (Settings.Visuals.DrawPlayerDistance || Settings.Visuals.ShowWeapons)
                             {
                                 int Distance = Cache.LocalActor->RootComponent->GetWorldLocation().DistTo(Actor->RootComponent->GetWorldLocation()) * 0.01f;
@@ -618,7 +539,6 @@ HRESULT Renderer::D3D_HOOK(IDXGISwapChain* SwapChain, UINT SyncInterval, UINT Fl
                             {
                                 Renderer::Drawing::RenderText(ImVec2(ActorScreenLocation.X, ActorScreenLocation.Y + TorpOffset), PlayerColor, PlayerTorp.c_str(), 500);
                             }
-                            Logger::Log("Log 3\n");
                             if (Settings.Visuals.RenderPlayerName)
                             {
                                 Renderer::Drawing::RenderText(ImVec2(ActorScreenLocation.X, ActorScreenLocation.Y), PlayerColor, PlayerDisplayString.c_str(), 500);
@@ -628,7 +548,6 @@ HRESULT Renderer::D3D_HOOK(IDXGISwapChain* SwapChain, UINT SyncInterval, UINT Fl
                                 Renderer::Drawing::RenderPlayerSkeleton(Actor->MeshComponent, Actor->RetrievePlayerGender(Actor->Name.GetName()), PlayerColor);
                             }
                             if (isDead) continue;
-                            Logger::Log("Log 4\n");
                             if (!Settings.Visuals.DrawPlayerHP) continue;
                             Renderer::Drawing::RenderText(ImVec2(ActorScreenLocation.X, ActorScreenLocation.Y - DistanceOffset), PlayerColor, PlayerHP.c_str(), 500);
                         }
@@ -1326,80 +1245,68 @@ HRESULT Renderer::D3D_HOOK(IDXGISwapChain* SwapChain, UINT SyncInterval, UINT Fl
     return D3D.OriginalPresent(SwapChain, SyncInterval, Flags);
 }
 
-std::string RetrieveUWPFolder()
+std::wstring RetrieveUWPFolder(const wchar_t* fileName)
 {
-    char szPath[MAX_PATH];
-    if (SUCCEEDED(SHGetFolderPath(NULL, CSIDL_LOCAL_APPDATA, NULL, 0, szPath))) // Get Mod Files Path Folder
+    wchar_t szPath[MAX_PATH];
+    if (SUCCEEDED(SHGetFolderPathW(NULL, CSIDL_LOCAL_APPDATA, NULL, 0, szPath)))
     {
-        std::string data = std::string(szPath) + std::string("\\wdsadw.txt");
-        return std::string(szPath) + std::string("\\wdsadw.txt");
+        std::wstringstream data;
+        data << szPath << L"\\" << fileName;
+        return data.str();
+    }
+    else
+    {
+        throw std::runtime_error("Could not retrieve folder");
     }
 }
 
-std::string RetrieveUWPFolder2()
+std::wstring InsertDoubleSlashes(std::wstring CurrentPath)
 {
-    char szPath[MAX_PATH];
-    if (SUCCEEDED(SHGetFolderPath(NULL, CSIDL_LOCAL_APPDATA, NULL, 0, szPath))) // Get Mod Files Path Folder
+    std::wstringstream Stream;
+    for (const auto& ch : CurrentPath)
     {
-        std::string data = std::string(szPath) + std::string("\\details.txt");
-        return std::string(szPath) + std::string("\\details.txt");
-    }
-}
-
-std::string InsertDoubleSlashes(std::string CurrentPath)
-{
-    std::stringstream Stream;
-    for (int i = 0; i < CurrentPath.length(); ++i)
-    {
-        if (CurrentPath[i] == '\\') Stream << "\\\\";
-        else Stream << CurrentPath[i];
+        if (ch == '\\') Stream << L"\\\\";
+        else Stream << ch;
     }
     return Stream.str();
 }
 
-std::wstring s2ws(const std::string& str)
+void InitCheat()
 {
-    int size_needed = MultiByteToWideChar(CP_UTF8, 0, &str[0], (int)str.size(), NULL, 0);
-    std::wstring wstrTo(size_needed, 0);
-    MultiByteToWideChar(CP_UTF8, 0, &str[0], (int)str.size(), &wstrTo[0], size_needed);
-    return wstrTo;
+    try
+    {
+        std::wstring loggerFile = InsertDoubleSlashes(RetrieveUWPFolder(L"logger.gc"));
+
+        uintptr_t GameBase = reinterpret_cast<uintptr_t>(GetModuleHandle(nullptr));
+        UWorld::GWorld = *reinterpret_cast<decltype(UWorld::GWorld)*>(GameBase + Settings.uworld);
+        Cache.GameBase = GameBase;
+
+        Settings.OriginalGetBoneLocation = reinterpret_cast<decltype(Settings.OriginalGetBoneLocation)>(PatternScan(GameBase, "40 57 48 83 EC 70 48 C7 44 24 ? ? ? ? ? 48 89 9C 24 ? ? ? ? 48 8B DA 48 8B F9 49 8B D0 E8 ? ? ? ? 83 F8 FF"));
+        Settings.GetBoneLocation = reinterpret_cast<decltype(Settings.GetBoneLocation)>(Settings.OriginalGetBoneLocation);
+
+        Settings.OriginalInputKey = reinterpret_cast<decltype(Settings.OriginalInputKey)>(PatternScan(GameBase, "48 8B C4 48 89 50 10 56 57 41 56 48 81 EC ? ? ? ? 48 C7 44 24 ? ? ? ? ? 48 89 58 18 48 89 68 20 0F 29 70 D8"));
+        Settings.InputKey = reinterpret_cast<decltype(Settings.InputKey)>(Settings.OriginalInputKey);
+
+        if (!Logger::Init(loggerFile.c_str()))
+            throw std::runtime_error("[LOGGER]: Failed to initialize logger!");
+
+        if (!Renderer::Init())
+            throw std::runtime_error("[RENDERER]: Renderer Failed To Initialize!");
+
+        if (!InitSDK())
+            throw std::runtime_error("[SDK]: SDK Failed To Initialize!");
+
+        Logger::Log("[GObjects]: %p\n", UObject::GObjects);
+        Logger::Log("[GNames]: %p\n", FName::GNames);
+        Logger::Log("[UWorld]: %p\n", UWorld::GWorld);
+        Logger::Log("[PersistentLevel]: %p\n", UWorld::GWorld->PersistentLevel);
+    }
+    catch (const std::exception& ex)
+    {
+        Logger::Log(ex.what());
+    }
 }
 
-void RenderMenu()
-{
-    std::string zzgiwd = InsertDoubleSlashes(RetrieveUWPFolder());
-    std::string zzgiwd2 = InsertDoubleSlashes(RetrieveUWPFolder2());
-    std::wstring zinger = s2ws(zzgiwd);
-
-    std::ifstream file(zzgiwd2.c_str());
-    std::stringstream buffer;
-
-    buffer << file.rdbuf();
-    std::string str = buffer.str();
-
-    //KeyAuthApp.init();
-    // THESE TWO LINES ARE AUTH, YOU CAN ADD IT IF U WANT
-    //KeyAuthApp.license(str.c_str());
-
-    uintptr_t GameBase = (uintptr_t)GetModuleHandle(nullptr); // Offset to update here UWORLD
-    UWorld::GWorld = *reinterpret_cast<decltype(UWorld::GWorld)*>(GameBase + 0x42517B8);
-    Cache.GameBase = GameBase;
-    Settings.OriginalGetBoneLocation = reinterpret_cast<decltype(Settings.OriginalGetBoneLocation)>(PatternScan(GameBase, "40 57 48 83 EC 70 48 C7 44 24 ? ? ? ? ? 48 89 9C 24 ? ? ? ? 48 8B DA 48 8B F9 49 8B D0 E8 ? ? ? ? 83 F8 FF"));
-    Settings.GetBoneLocation = reinterpret_cast<decltype(Settings.GetBoneLocation)>(Settings.OriginalGetBoneLocation);
-    Settings.OriginalInputKey = reinterpret_cast<decltype(Settings.OriginalInputKey)>(PatternScan(GameBase, "48 8B C4 48 89 50 10 56 57 41 56 48 81 EC ? ? ? ? 48 C7 44 24 ? ? ? ? ? 48 89 58 18 48 89 68 20 0F 29 70 D8"));
-    Settings.InputKey = reinterpret_cast<decltype(Settings.InputKey)>(Settings.OriginalInputKey);
-    if (!Logger::Init(zinger.c_str())) return;
-    if (!Renderer::Init()) { return Logger::Log("[RENDERER]: Renderer Failed To Initialize!\n"); };
-    if (!InitSDK()) { return Logger::Log("[SDK]: SDK Failed To Initialize!\n"); }
-    Logger::Log("Get Folder: %s \n", zzgiwd2.c_str());
-    Logger::Log("File Contents: %s \n", str.c_str());
-    Logger::Log("[GObjects]: %p\n", UObject::GObjects);
-    Logger::Log("[GNames]: %p\n", FName::GNames);
-    Logger::Log("[UWorld]: %p\n", UWorld::GWorld);
-    Logger::Log("[PersistentLevel]: %p\n", UWorld::GWorld->PersistentLevel);
-}
-
-//thread functions here
 void AimbotThread() 
 {
     do
@@ -1428,18 +1335,14 @@ void AimbotThread()
                     auto Actor = Actors[i];
                     if (Actor && Actor->IsPlayer())
                     {
-                        Logger::Log("Aim Log Thing 0.1\n ");
                         Settings.GetBoneLocation(Actor->MeshComponent, &BoneWorldLocation, Actor->MeshComponent->GetBoneName(AimBone), 0);
-                        Logger::Log("Aim Log Thing 0.2\n ");
                         if (!W2S(BoneWorldLocation, BoneScreenLocation) || !Renderer::Drawing::WithinAimFOV(Cache.WindowSizeX / 2, Cache.WindowSizeY / 2, Settings.Visuals.FOVSize, BoneScreenLocation.X, BoneScreenLocation.Y)) continue;
                         if (Actor->IsDead() || Actor->IsLocalPlayer()) continue;
-                        Logger::Log("Aim Log Thing 1\n ");
                         if (Settings.Aimbot.TargetTribe)
                         {
                             if (Actor->TribeName.IsValid() && Actor->TribeName.ToString() == Cache.LocalActor->TribeName.ToString()) continue;
                         }
                         if (!Settings.Aimbot.TargetSleepers && !Actor->IsConscious()) continue;
-                        Logger::Log("Aim Log Thing 1.1\n ");
                         if (Cache.AimbotTarget) {
                             FVector TheirVelocity = Cache.AimbotTarget->CharacterMovement->Velocity;
                             FVector MyVelocity = Cache.LocalActor->CharacterMovement->Velocity;
@@ -1449,11 +1352,9 @@ void AimbotThread()
                                 BoneWorldLocation += BoneWorldLocation + (TheSpeed / TheirVelocity);
                             }
                         }
-                        Logger::Log("Aim Log Thing 1.9\n ");
                         if (Settings.Aimbot.VisibleOnly && !Cache.LPC->LineOfSightTo(Actor, Cache.LPC->PlayerCameraManager->GetCameraLocation(), false)) continue;
                         int Distance = Renderer::Drawing::ReturnDistance(Cache.WindowSizeX / 2, Cache.WindowSizeY / 2, BoneScreenLocation.X, BoneScreenLocation.Y);
                         if (Distance < LastDistance) { LastDistance = Distance, Cache.AimbotTarget = Actor; }
-                        Logger::Log("Aim Log Thing 2\n ");
                     }
                 }
                 if (AimKeyDown && Cache.AimbotTarget)

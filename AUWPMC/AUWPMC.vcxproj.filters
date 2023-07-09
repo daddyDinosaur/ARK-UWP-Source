@@ -36,43 +36,40 @@
     <ClCompile Include="Cheat.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Logger.cpp">
+    <ClCompile Include="Helpers\Logger\Logger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Hooking\D3D11Hooking.cpp">
+    <ClCompile Include="Helpers\Hooking\D3D11Hooking.cpp">
       <Filter>Hooking</Filter>
     </ClCompile>
-    <ClCompile Include="imgui\imgui.cpp">
+    <ClCompile Include="Helpers\imgui\imgui.cpp">
       <Filter>imgui</Filter>
     </ClCompile>
-    <ClCompile Include="imgui\imgui_demo.cpp">
+    <ClCompile Include="Helpers\imgui\imgui_demo.cpp">
       <Filter>imgui</Filter>
     </ClCompile>
-    <ClCompile Include="imgui\imgui_draw.cpp">
+    <ClCompile Include="Helpers\imgui\imgui_draw.cpp">
       <Filter>imgui</Filter>
     </ClCompile>
-    <ClCompile Include="imgui\imgui_impl_dx11.cpp">
+    <ClCompile Include="Helpers\imgui\imgui_impl_dx11.cpp">
       <Filter>imgui</Filter>
     </ClCompile>
-    <ClCompile Include="imgui\imgui_impl_win32.cpp">
+    <ClCompile Include="Helpers\imgui\imgui_impl_win32.cpp">
       <Filter>imgui</Filter>
     </ClCompile>
-    <ClCompile Include="imgui\imgui_widgets.cpp">
+    <ClCompile Include="Helpers\imgui\imgui_widgets.cpp">
       <Filter>imgui</Filter>
     </ClCompile>
-    <ClCompile Include="SDK\SDK.cpp">
+    <ClCompile Include="Helpers\SDK\SDK.cpp">
       <Filter>SDK</Filter>
     </ClCompile>
-    <ClCompile Include="SDK\UE4\Transform.cpp">
+    <ClCompile Include="Helpers\SDK\UE4\Transform.cpp">
       <Filter>SDK\UE4</Filter>
     </ClCompile>
-    <ClCompile Include="SDK\UE4\UE4.cpp">
+    <ClCompile Include="Helpers\SDK\UE4\UE4.cpp">
       <Filter>SDK\UE4</Filter>
     </ClCompile>
-    <ClCompile Include="MemHelper.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ExtraCode.cpp">
+    <ClCompile Include="Helpers\Hooking\MemHelper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -80,111 +77,111 @@
     <ClInclude Include="Cheat.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Logger.h">
+    <ClInclude Include="Helpers\Logger\Logger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MemHelper.h">
+    <ClInclude Include="Helpers\Hooking\MemHelper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Hooking\D3D11Hooking.hpp">
+    <ClInclude Include="Helpers\Hooking\D3D11Hooking.hpp">
       <Filter>Hooking</Filter>
     </ClInclude>
-    <ClInclude Include="Hooking\HookLib.h">
+    <ClInclude Include="Helpers\Hooking\HookLib.h">
       <Filter>Hooking</Filter>
     </ClInclude>
-    <ClInclude Include="Hooking\magic_enum.hpp">
+    <ClInclude Include="Helpers\Hooking\magic_enum.hpp">
       <Filter>Hooking</Filter>
     </ClInclude>
-    <ClInclude Include="imgui\imconfig.h">
+    <ClInclude Include="Helpers\imgui\imconfig.h">
       <Filter>imgui</Filter>
     </ClInclude>
-    <ClInclude Include="imgui\imgui.h">
+    <ClInclude Include="Helpers\imgui\imgui.h">
       <Filter>imgui</Filter>
     </ClInclude>
-    <ClInclude Include="imgui\imgui_impl_dx11.h">
+    <ClInclude Include="Helpers\imgui\imgui_impl_dx11.h">
       <Filter>imgui</Filter>
     </ClInclude>
-    <ClInclude Include="imgui\imgui_impl_win32.h">
+    <ClInclude Include="Helpers\imgui\imgui_impl_win32.h">
       <Filter>imgui</Filter>
     </ClInclude>
-    <ClInclude Include="imgui\imgui_internal.h">
+    <ClInclude Include="Helpers\imgui\imgui_internal.h">
       <Filter>imgui</Filter>
     </ClInclude>
-    <ClInclude Include="imgui\imstb_rectpack.h">
+    <ClInclude Include="Helpers\imgui\imstb_rectpack.h">
       <Filter>imgui</Filter>
     </ClInclude>
-    <ClInclude Include="imgui\imstb_textedit.h">
+    <ClInclude Include="Helpers\imgui\imstb_textedit.h">
       <Filter>imgui</Filter>
     </ClInclude>
-    <ClInclude Include="imgui\imstb_truetype.h">
+    <ClInclude Include="Helpers\imgui\imstb_truetype.h">
       <Filter>imgui</Filter>
     </ClInclude>
-    <ClInclude Include="SDK\SDK.h">
+    <ClInclude Include="Helpers\SDK\SDK.h">
       <Filter>SDK</Filter>
     </ClInclude>
-    <ClInclude Include="SDK\UE4\Color.h">
+    <ClInclude Include="Helpers\SDK\UE4\Color.h">
       <Filter>SDK\UE4</Filter>
     </ClInclude>
-    <ClInclude Include="SDK\UE4\Math.h">
+    <ClInclude Include="Helpers\SDK\UE4\Math.h">
       <Filter>SDK\UE4</Filter>
     </ClInclude>
-    <ClInclude Include="SDK\UE4\Matrix.h">
+    <ClInclude Include="Helpers\SDK\UE4\Matrix.h">
       <Filter>SDK\UE4</Filter>
     </ClInclude>
-    <ClInclude Include="SDK\UE4\Quat.h">
+    <ClInclude Include="Helpers\SDK\UE4\Quat.h">
       <Filter>SDK\UE4</Filter>
     </ClInclude>
-    <ClInclude Include="SDK\UE4\Rotator.h">
+    <ClInclude Include="Helpers\SDK\UE4\Rotator.h">
       <Filter>SDK\UE4</Filter>
     </ClInclude>
-    <ClInclude Include="SDK\UE4\Transform.h">
+    <ClInclude Include="Helpers\SDK\UE4\Transform.h">
       <Filter>SDK\UE4</Filter>
     </ClInclude>
-    <ClInclude Include="SDK\UE4\UE4.h">
+    <ClInclude Include="Helpers\SDK\UE4\UE4.h">
       <Filter>SDK\UE4</Filter>
     </ClInclude>
-    <ClInclude Include="SDK\UE4\Vector.h">
+    <ClInclude Include="Helpers\SDK\UE4\Vector.h">
       <Filter>SDK\UE4</Filter>
     </ClInclude>
-    <ClInclude Include="SDK\UE4\Vector2D.h">
+    <ClInclude Include="Helpers\SDK\UE4\Vector2D.h">
       <Filter>SDK\UE4</Filter>
     </ClInclude>
-    <ClInclude Include="SDK\UE4\Vector4.h">
+    <ClInclude Include="Helpers\SDK\UE4\Vector4.h">
       <Filter>SDK\UE4</Filter>
     </ClInclude>
     <ClInclude Include="Menu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Extra.h">
+    <ClInclude Include="Helpers\random\Extra.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Includes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="strenc.h">
+    <ClInclude Include="Helpers\random\strenc.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="pcg32.h">
+    <ClInclude Include="Helpers\random\pcg32.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="fnv1.h">
+    <ClInclude Include="Helpers\random\fnv1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="byte.h">
+    <ClInclude Include="Helpers\random\byte.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="xorstr.hpp">
+    <ClInclude Include="Helpers\random\xorstr.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Library Include="Hooking\HookLib.lib">
+    <Library Include="Helpers\Hooking\HookLib.lib">
       <Filter>Hooking</Filter>
     </Library>
-    <Library Include="Hooking\Zydis.lib">
+    <Library Include="Helpers\Hooking\Zydis.lib">
       <Filter>Hooking</Filter>
     </Library>
-    <Library Include="zlib.lib" />
+    <Library Include="Helpers\random\zlib.lib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="libs\openssl\BUILD_INFO" />

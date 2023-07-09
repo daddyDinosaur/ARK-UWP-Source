@@ -1,11 +1,11 @@
 #pragma once
-#include "imgui\imgui.h"
-#include "imgui\imgui_impl_win32.h"
-#include "imgui\imgui_impl_dx11.h"
-#include "imgui\imgui_internal.h"
+#include "Helpers/imgui\imgui.h"
+#include "Helpers/imgui\imgui_impl_win32.h"
+#include "Helpers/imgui\imgui_impl_dx11.h"
+#include "Helpers/imgui\imgui_internal.h"
 #include "Cheat.h"
 
-float CachedFramerates[1000];
+float CachedFramerates[1000];                                               
 int AimBone = 4; // Default chest, head is 8
 int PossibleDinos = 1;
 int PossibleAimKey = 6;

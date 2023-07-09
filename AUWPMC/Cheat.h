@@ -1,14 +1,5 @@
 #pragma once
-#include "MemHelper.h"
-#include <TlHelp32.h>
-#include <iostream>
-#include <stdio.h>
-#include "SDK/SDK.h"
-#include <stdio.h>
-#include <tchar.h>
-#include <iostream>
-#include <Windows.h>
-#include <vector>
+#include "Includes.h"
 
 struct
 {
@@ -382,9 +373,11 @@ struct
 			int B = 201;
 		} Turrets;
 	} Colors;
+
+	uintptr_t uworld, objects, names;
 } Settings;
 
-void RenderMenu();
+void InitCheat();
 
 //threads
 void AimbotThread();
